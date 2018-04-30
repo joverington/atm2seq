@@ -1,0 +1,64 @@
+.\"
+.\" /u/jpo/src/joy/atm2seq.1
+.\"
+.\" manual page for atm2seq, process with man macros - jpo June 1990
+.\"
+.de P1
+.sp .5
+.ft LP
+.ps 8
+.vs 10
+.nf
+..
+.de P2
+.fi
+.vs
+.ps
+.ft P
+.sp .5
+..
+.TH ATM2SEQ 1 "" ""
+.SH NAME
+Atm2seq \- convert a PDB format file into a PIR format sequence file
+.SH SYNOPSIS
+.in +\w'\fBatm2seq\ \fP'u
+.ti -\w'\fBatm2seq\ \fP'u
+\fBatm2seq \fIfile\fB
+.in -\w'\fBatm2seq\ 'u
+.SH DESCRIPTION
+.I Atm2seq
+converts a PDB format file into a PIR formatted sequence file. Input can be
+any file containing valid PDB coordinates, the output file will have the
+same base as the input file with a 
+.I .seq
+extension. It will be in a format acceptable to 
+.I joy,
+.I i.e.
+first line `\s+2\f(CW>P1;file_name_root\fP\s0', second
+line `\s+2\f(CWstructure\fP\s0' (this means that if 
+.I joy
+has anything to do with the file then it will expect structural
+information), the third and subsequent lines will contain the sequence in
+the standard one-letter amino acid code, formatted into blocks of 75 and
+terminated with a `*'.
+.P
+An example PIR format file produced by
+.I atm2seq
+from the file 4ape.atm is:
+.P1
+>P1;4ape
+structure
+STGSATTTPIDSLDDAYITPVQIGTPAQTLNLDFDTGSSDLWVFSSETTASEVDGQTIYTPSKSTTAKLLSGATW
+SISYGDGSSSSGDVYTDTVSVGGLTVTGQAVESAKKVSSSFTEDSTIDGLLGLAFSTLNTVSPTQQKTFFDNAKA
+SLDSPVFTADLGYHAPGTYNFGFIDTTAYTGSITYTAVSTKQGFWEWTSTGYAVGSGTFKSTSIDGIADTGTTLL
+YLPATVVSAYWAQVSGAKSSSSVGGYVFPCSATLPSFTFGVGSARIVIPGDYIDFGPISTGSSSCFGGIQSSAGI
+GINIFGDVALKAAFVVFNGATTPTLGFASK*
+.P2
+
+.P
+.SH "SEE ALSO"
+\fIjoy(1), pdb2atm(1) pir(4)\fP
+.SH "RELEASE LEVEL"
+This document describes 
+.I atm2seq
+version 1.0 and later.
